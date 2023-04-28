@@ -47,7 +47,7 @@ export const api = {
         return new Promise(resolve => {
             setTimeout(() => {
                 const orders: Order[] = [];
-                const statuses: OrderStatus[] = ['delivery', 'preparing', 'sent'];
+                const statuses: OrderStatus[] = ['delivered', 'preparing', 'sent'];
 
                 for (let i = 0; i < 6; i++) {
                     orders.push({
@@ -83,5 +83,8 @@ export const api = {
                 resolve(orders);
             }, 1000)
         })
+    },
+    changeOrderStatus: async (id: number, newStatus: OrderStatus) => {
+        return true;
     }
 }
