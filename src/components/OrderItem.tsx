@@ -2,6 +2,7 @@ import { dateFormatter } from "@/libs/dateFormatter";
 import { Order } from "@/types/Order";
 import { OrderStatus } from "@/types/OrderStatus";
 import { Box, Button, MenuItem, Select, SelectChangeEvent, Typography } from "@mui/material";
+import { memo } from "react";
 
 type Props = {
     item: Order;
@@ -9,7 +10,7 @@ type Props = {
     onPrint: (order: Order) => void;
 }
 
-export const OrderItem = ({ item, onChangeStatus, onPrint }: Props) => {
+const OrderItem = ({ item, onChangeStatus, onPrint }: Props) => {
 
     const getStatusBackground = (status: OrderStatus) => {
         const statuses = {
@@ -20,7 +21,6 @@ export const OrderItem = ({ item, onChangeStatus, onPrint }: Props) => {
 
         return statuses[status];
     }
-
 
     // const handleStatusChange = (event: SelectChangeEvent) => {
     //     onChangeStatus(item.id, event.target.value as OrderStatus);
@@ -77,3 +77,5 @@ export const OrderItem = ({ item, onChangeStatus, onPrint }: Props) => {
         </Box >
     );
 }
+
+export default memo(OrderItem);

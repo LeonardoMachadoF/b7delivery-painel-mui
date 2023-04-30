@@ -1,13 +1,13 @@
 "use client"
 
-import { OrderItem } from "@/components/OrderItem";
+import OrderItem from "@/components/OrderItem";
 import { api } from "@/libs/api";
 import { dateFormatter } from "@/libs/dateFormatter";
 import { Order } from "@/types/Order";
 import { OrderStatus } from "@/types/OrderStatus";
 import { Refresh, Search } from "@mui/icons-material";
 import { Box, Button, CircularProgress, Grid, InputAdornment, Skeleton, TextField, Typography } from "@mui/material";
-import { KeyboardEvent, useEffect, useState } from "react";
+import { KeyboardEvent, useCallback, useEffect, useState } from "react";
 
 const Page = () => {
     const [searchInput, setSearchInput] = useState("");
@@ -48,17 +48,17 @@ const Page = () => {
         setFilteredOrders(orders);
     };
 
-    const handleChangeStatus = async (id: number, newStatus: OrderStatus) => {
+    const handleChangeStatus = useCallback(async (id: number, newStatus: OrderStatus) => {
         await api.changeOrderStatus(id, newStatus);
         getOrders();
-    }
+    }, []);
 
-    const handlePrintAction = (order: Order) => {
+    const handlePrintAction = useCallback((order: Order) => {
         setPrintOrder(order);
         setTimeout(() => {
             if (window) window.print();
         }, 200);
-    }
+    }, [])
 
     return (
         <>
