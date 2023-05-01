@@ -38,7 +38,7 @@ const Page = () => {
     const handleSearchKey = (event: KeyboardEvent<HTMLInputElement>) => {
         if (event.code.toLowerCase() !== 'enter') return;
 
-        if (searchInput !== "") {
+        if (!searchInput) {
             let newOrders: Order[] = orders.filter(order => order.id.toString() === searchInput);
 
             setFilteredOrders(newOrders);
