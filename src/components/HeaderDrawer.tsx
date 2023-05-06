@@ -1,5 +1,5 @@
-import { Box, Divider, Drawer, List, ListItem, ListItemButton, ListItemText, Typography } from "@mui/material";
-import Link from "next/link";
+import { Box, Divider, Drawer, List, Typography } from "@mui/material";
+import { ListItemComponent } from "./ListItemComponent";
 
 type Props = {
     open: boolean;
@@ -27,32 +27,10 @@ export const HeaderDrawer = ({ open, onClose, title, onLogout }: Props) => {
                 <Typography variant='h6' sx={{ my: 2 }}>{title}</Typography>
                 <Divider />
                 <List>
-                    <ListItem disablePadding>
-                        <ListItemButton>
-                            <Link href="/pedidos" style={{ color: '#000', textDecoration: 'none' }}>
-                                <ListItemText primary="Pedidos" />
-                            </Link>
-                        </ListItemButton>
-                    </ListItem>
-                    <ListItem disablePadding>
-                        <ListItemButton>
-                            <Link href="/produtos" style={{ color: '#000', textDecoration: 'none' }}>
-                                <ListItemText primary="Produtos" />
-                            </Link>
-                        </ListItemButton>
-                    </ListItem>
-                    <ListItem disablePadding>
-                        <ListItemButton>
-                            <Link href="/categorias" style={{ color: '#000', textDecoration: 'none' }}>
-                                <ListItemText primary="Categorias" />
-                            </Link>
-                        </ListItemButton>
-                    </ListItem>
-                    <ListItem disablePadding>
-                        <ListItemButton onClick={onLogout}>
-                            <ListItemText primary="Sair" />
-                        </ListItemButton>
-                    </ListItem>
+                    <ListItemComponent disablePadding href="/pedidos" color='#000' primaryText="Pedidos" />
+                    <ListItemComponent disablePadding href="/produtos" color='#000' primaryText="Produtos" />
+                    <ListItemComponent disablePadding href="/categorias" color='#000' primaryText="Categorias" />
+                    <ListItemComponent disablePadding color='#000' primaryText="Sair" onClick={onLogout} />
                 </List>
             </Box>
         </Drawer>
