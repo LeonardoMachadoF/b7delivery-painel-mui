@@ -27,10 +27,10 @@ export const HeaderDrawer = ({ open, onClose, title, onLogout }: Props) => {
                 <Typography variant='h6' sx={{ my: 2 }}>{title}</Typography>
                 <Divider />
                 <List>
-                    <ListItemComponent disablePadding href="/pedidos" color='#000' primaryText="Pedidos" />
-                    <ListItemComponent disablePadding href="/produtos" color='#000' primaryText="Produtos" />
-                    <ListItemComponent disablePadding href="/categorias" color='#000' primaryText="Categorias" />
-                    <ListItemComponent disablePadding color='#000' primaryText="Sair" onClick={onLogout} />
+                    <ListItemComponent href="/pedidos" color='#000' primaryText="Pedidos" />
+                    <ListItemComponent href="/produtos" color='#000' primaryText="Produtos" />
+                    <ListItemComponent href="/categorias" color='#000' primaryText="Categorias" />
+                    <ListItemComponent color='#000' primaryText="Sair" onClick={onLogout} />
                 </List>
             </Box>
         </Drawer>

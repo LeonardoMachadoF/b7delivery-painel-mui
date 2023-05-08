@@ -10,7 +10,7 @@ interface Props {
 
 export const ListItemComponent = ({ disablePadding, href, color, primaryText, onClick }: Props) => {
     return (
-        <ListItem disablePadding={disablePadding}>
+        <ListItem disablePadding={disablePadding || true}>
             <ListItemButton>
                 {href ?
                     <Link href={href} style={{ color, textDecoration: 'none' }}>
