@@ -1,10 +1,26 @@
 "use client"
 
+import { api } from "@/libs/api";
+import { Category } from "@/types/Category";
+import { Product } from "@/types/Product";
 import { Box, Button, Table, TableBody, TableCell, TableHead, TableRow, TextField, Typography } from "@mui/material";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 const Page = () => {
     const [loading, setLoading] = useState(true);
+    const [products, setProducts] = useState<Product[]>();
+    const [categories, setCategories] = useState<Category[]>();
+
+    const getProducts = async () => {
+        setLoading(true);
+        setProducts(await api.getProducts());
+        setCategories(await api.getCategories());
+        setLoading(false);
+    }
+
+    useEffect(() => {
+        getProducts();
+    }, [])
 
     const handleNewProduct = () => { }
 
