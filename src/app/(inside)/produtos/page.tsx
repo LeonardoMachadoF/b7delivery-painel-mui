@@ -1,5 +1,6 @@
 "use client"
 
+import { ProductTableSkeleton } from "@/components/ProductTableSkeleton";
 import { api } from "@/libs/api";
 import { Category } from "@/types/Category";
 import { Product } from "@/types/Product";
@@ -45,7 +46,9 @@ const Page = () => {
                                 <TableCell sx={{ xs: 50, md: 130 }}>Ações</TableCell>
                             </TableRow>
                         </TableHead>
-                        <TableBody></TableBody>
+                        <TableBody>
+                            <ProductTableSkeleton />
+                        </TableBody>
                     </Table>
                 </Box>
             </Box >
