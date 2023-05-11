@@ -1,5 +1,6 @@
 "use client"
 
+import { ProductTableItem } from "@/components/ProductTableItem";
 import { ProductTableSkeleton } from "@/components/ProductTableSkeleton";
 import { api } from "@/libs/api";
 import { Category } from "@/types/Category";
@@ -19,6 +20,9 @@ const Page = () => {
         setLoading(false);
     }
 
+    const handleEditProduct = (product: Product) => { }
+    const handleDeleteProduct = (product: Product) => { }
+
     useEffect(() => {
         getProducts();
     }, [])
@@ -28,8 +32,8 @@ const Page = () => {
     return (
         <>
             <Box sx={{ my: 3 }}>
-                <Box sx={{ display: "flex", justifyContent: 'space-between', mb: 3 }}>
-                    <Box sx={{ display: 'flex', alignItems: 'center' }}>
+                <Box sx={{ mb: 3 }}>
+                    <Box sx={{ display: 'flex', alignItems: 'center', justifyContent: "space-between" }}>
                         <Typography component='h5' variant="h5" sx={{ color: '#555', mr: 2 }}>
                             Produtos
                         </Typography>
@@ -43,11 +47,26 @@ const Page = () => {
                                 <TableCell>Nome</TableCell>
                                 <TableCell sx={{ display: { xs: 'none', md: 'table-cell' } }}>Preço</TableCell>
                                 <TableCell sx={{ display: { xs: 'none', md: 'table-cell' } }}>Categoria</TableCell>
-                                <TableCell sx={{ xs: 50, md: 130 }}>Ações</TableCell>
+                                <TableCell sx={{ width: { xs: 50, md: 130 } }}>Ações</TableCell>
                             </TableRow>
                         </TableHead>
                         <TableBody>
-                            <ProductTableSkeleton />
+                            {loading ?
+                                <>
+                                    <ProductTableSkeleton />
+                                    <ProductTableSkeleton />
+                                    <ProductTableSkeleton />
+                                </>
+                                :
+                                products?.map(product => (
+                                    <ProductTableItem
+                                        key={product.id}
+                                        item={product}
+                                        onEdit={handleEditProduct}
+                                        onDelete={handleDeleteProduct}
+                                    />
+                                ))
+                            }
                         </TableBody>
                     </Table>
                 </Box>

@@ -1,3 +1,4 @@
+import { Delete, Edit } from "@mui/icons-material";
 import { Skeleton, TableCell, TableRow } from "@mui/material";
 
 export const ProductTableSkeleton = () => (
@@ -5,7 +6,7 @@ export const ProductTableSkeleton = () => (
         <TableCell sx={{ display: { xs: 'none', md: 'table-cell' } }}>
             <Skeleton variant="text" />
         </TableCell>
-        <TableCell>
+        <TableCell sx={{ width: { xs: 50, md: 100 } }}>
             <Skeleton variant="circular" width={50} height={50} />
         </TableCell>
         <TableCell>
@@ -17,6 +18,9 @@ export const ProductTableSkeleton = () => (
         <TableCell sx={{ display: { xs: 'none', md: 'table-cell' } }}>
             <Skeleton variant="text" />
         </TableCell>
-        <TableCell >Ações</TableCell>
+        <TableCell >
+            <Edit />
+            <Delete />
+        </TableCell>
     </TableRow>
 )
