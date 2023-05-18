@@ -119,4 +119,11 @@ export const api = {
             }, 700)
         })
     },
+    deleteProduct: async (id: number) => {
+        return new Promise(resolve => {
+            setTimeout(() => {
+                resolve(true)
+            }, 1000)
+        })
+    }
 }
